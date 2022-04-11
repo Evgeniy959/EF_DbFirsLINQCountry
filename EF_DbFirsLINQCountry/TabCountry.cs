@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace EF_DbFirsLINQCountry
 {
@@ -20,7 +19,7 @@ namespace EF_DbFirsLINQCountry
         public double Area { get; set; }
         public string PartOfTheWorld { get; set; }
 
-        public virtual TabCapitals Capital { get; set; }
+        public virtual TabCapital Capital { get; set; }
         public virtual ICollection<TabCity> TabCities { get; set; }
     }
 }

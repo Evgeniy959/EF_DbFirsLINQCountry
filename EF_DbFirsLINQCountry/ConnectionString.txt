@@ -1,0 +1,1 @@
+Server=mysql60.hostland.ru;Database=host1323541_pd2;Uid=host1323541_itstep;Pwd=269f43dc;

@@ -1,24 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+
+#nullable disable
 
 namespace EF_DbFirsLINQCountry
 {
-    public partial class host1323541_sbd06Context : DbContext
+    public partial class host1323541_pd2Context : DbContext
     {
         public static string connectionStringFile => "/ConnectionString.txt";
-        public host1323541_sbd06Context()
+        public host1323541_pd2Context()
         {
         }
 
-        public host1323541_sbd06Context(DbContextOptions<host1323541_sbd06Context> options)
+        public host1323541_pd2Context(DbContextOptions<host1323541_pd2Context> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<TabCapitals> TabCapitals { get; set; }
+        public virtual DbSet<TabCapital> TabCapitals { get; set; }
         public virtual DbSet<TabCity> TabCities { get; set; }
         public virtual DbSet<TabCountry> TabCountries { get; set; }
 
@@ -26,10 +27,12 @@ namespace EF_DbFirsLINQCountry
         {
             if (!optionsBuilder.IsConfigured)
             {
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseMySQL(GetConnectionString(connectionStringFile));
+                /*var str = File.ReadAllText("ConnectionString.txt");
+                optionsBuilder.UseLazyLoadingProxies().UseMySQL(str);*/
             }
         }
-
         public static string GetConnectionString(string connectionStringFile)
         {
             var streamReader = new StreamReader(Directory.GetCurrentDirectory() + connectionStringFile);
@@ -38,7 +41,7 @@ namespace EF_DbFirsLINQCountry
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TabCapitals>(entity =>
+            modelBuilder.Entity<TabCapital>(entity =>
             {
                 entity.ToTable("tab_capitals");
 

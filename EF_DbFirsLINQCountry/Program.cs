@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace EF_DbFirsLINQCountry
 {
@@ -6,7 +7,7 @@ namespace EF_DbFirsLINQCountry
     {
         static void Main()
         {
-            using (var db = new host1323541_sbd06Context())
+            using (var db = new host1323541_pd2Context())
             {
                 var countriesInfo = from Capital in db.TabCapitals
                                     join Country in db.TabCountries on Capital.Id equals Country.CapitalId
@@ -72,7 +73,7 @@ namespace EF_DbFirsLINQCountry
                 Console.WriteLine();
 
             };
-            using (var db = new host1323541_sbd06Context())
+            using (var db = new host1323541_pd2Context())
             {
                 var capitalsWith_a_and_i = from Capital in db.TabCapitals
                                            where (Capital.Name.Contains("a") && Capital.Name.Contains("i"))
@@ -98,7 +99,7 @@ namespace EF_DbFirsLINQCountry
 
 
             };
-            using (var db = new host1323541_sbd06Context())
+            using (var db = new host1323541_pd2Context())
             {
 
                 var topAreaCountries = (from Country in db.TabCountries
@@ -165,7 +166,7 @@ namespace EF_DbFirsLINQCountry
 
                 Console.WriteLine();
 
-            };
+            }; 
         }
     }
 }
